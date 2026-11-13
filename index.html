@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10131b">
+<title>AnimeKoe — Ruang Diskusi Penggemar Anime</title>
+<meta name="description" content="Tempat ngobrol, berbagi teori, dan membahas anime bersama komunitas AnimeKoe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#10131b;--panel:#181d28;--panel2:#1d2330;--line:#2a3140;--text:#f1f3f8;--muted:#9ba5b6;--accent:#f0a65a;--accent2:#ffd09b;--green:#8bc7a1;--danger:#ff8585;--radius:17px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;min-height:100vh}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.topbar{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;position:sticky;top:0;background:#10131beF;backdrop-filter:blur(14px);z-index:10}
+.nav{width:min(1180px,calc(100% - 40px));margin:auto;display:flex;align-items:center;gap:30px}
+.brand{display:flex;align-items:center;gap:10px;font:700 22px "Space Grotesk";letter-spacing:-.8px;white-space:nowrap}
+.brand-mark{width:34px;height:34px;border-radius:11px;background:var(--accent);color:#24180e;display:grid;place-items:center;font:700 19px "Space Grotesk";transform:rotate(-5deg)}
+.brand span:last-child{color:var(--accent)}
+.navlinks{display:flex;gap:23px;color:var(--muted);font-size:14px}.navlinks a:hover,.navlinks a.active{color:var(--text)}
+.navright{margin-left:auto;display:flex;align-items:center;gap:12px}
+.search{width:220px;position:relative}.search input{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px 10px 35px;color:var(--text);outline:none}.search:before{content:"⌕";position:absolute;left:12px;top:5px;color:var(--muted);font-size:23px}
+.btn{border:0;border-radius:10px;padding:10px 15px;font-weight:700;font-size:13px;transition:.18s}.btn-primary{background:var(--accent);color:#24180e}.btn-primary:hover{background:var(--accent2);transform:translateY(-1px)}.btn-ghost{background:var(--panel2);border:1px solid var(--line);color:var(--text)}.btn-ghost:hover{border-color:#596274}
+.avatar{width:34px;height:34px;border-radius:50%;object-fit:cover;background:#333;display:inline-grid;place-items:center;color:#fff;font-weight:700}
+main{width:min(1180px,calc(100% - 40px));margin:36px auto 80px}
+.hero{border:1px solid #34303a;border-radius:22px;padding:35px 38px;background:radial-gradient(ellipse at 85% 15%,#46352a 0,transparent 37%),linear-gradient(115deg,#222631,#1b202b 65%,#28231f);position:relative;overflow:hidden;display:flex;align-items:center;min-height:205px}
+.hero:after{content:"アニメ";position:absolute;right:7%;bottom:-27px;font:700 112px "Space Grotesk";color:#ffffff08;letter-spacing:-8px;pointer-events:none}
+.eyebrow{color:var(--accent);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.hero h1{font:700 clamp(29px,4vw,43px) "Space Grotesk";letter-spacing:-1.7px;margin:10px 0 8px;max-width:650px}.hero p{color:#b7bfcc;margin:0;max-width:530px;line-height:1.65;font-size:14px}
+.hero-actions{display:flex;gap:10px;margin-top:22px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:24px;margin-top:28px}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}.section-head h2{font:600 19px "Space Grotesk";margin:0}.section-head p{color:var(--muted);font-size:12px;margin:4px 0 0}
+.tabs{display:flex;gap:7px;overflow:auto;padding-bottom:2px}.tab{white-space:nowrap;background:transparent;color:var(--muted);border:1px solid var(--line);padding:8px 12px;border-radius:9px;font-size:12px}.tab.active{background:#3a2d22;border-color:#755235;color:var(--accent2)}
+.feed{display:grid;gap:12px;margin-top:16px}
+.post{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:19px 20px;transition:border-color .2s}.post:hover{border-color:#424b5d}
+.post-top{display:flex;align-items:center;gap:9px}.userpic{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#394153}.user-meta{display:flex;flex-direction:column;gap:2px}.username{font-size:12px;font-weight:700}.post-time{font-size:11px;color:var(--muted)}.category{margin-left:auto;color:var(--accent2);background:#352b24;padding:5px 9px;border-radius:7px;font-size:10px;font-weight:700}
+.post h3{font:600 17px "Space Grotesk";margin:14px 0 7px;line-height:1.35}.post-body{font-size:13px;line-height:1.7;color:#b9c1ce;white-space:pre-wrap;overflow-wrap:anywhere}
+.post-foot{display:flex;gap:18px;margin-top:16px;padding-top:13px;border-top:1px solid #292f3c;color:var(--muted);font-size:11px}.post-foot button{border:0;background:none;color:inherit;padding:0}.post-foot button:hover{color:var(--accent2)}
+.side-card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:19px;margin-bottom:14px}.side-card h3{font:600 15px "Space Grotesk";margin:0 0 14px}.topic-list{display:grid;gap:13px}.topic{display:flex;justify-content:space-between;color:#dce1e9;font-size:12px}.topic small{color:var(--muted)}
+.rule{height:1px;background:var(--line);margin:15px 0}.side-note{font-size:12px;line-height:1.7;color:var(--muted)}
+.empty{padding:42px 20px;text-align:center;border:1px dashed #394252;border-radius:15px;color:var(--muted);font-size:13px}
+.loading{color:var(--muted);padding:30px;text-align:center}
+.modal-backdrop{position:fixed;inset:0;background:#05070bd9;z-index:30;display:none;align-items:center;justify-content:center;padding:18px}.modal-backdrop.show{display:flex}
+.modal{width:min(540px,100%);background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;max-height:90vh;overflow:auto;box-shadow:0 20px 70px #0008}
+.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.modal-head h2{font:600 20px "Space Grotesk";margin:0}.close{background:transparent;border:0;color:var(--muted);font-size:24px}
+.field{display:grid;gap:7px;margin-bottom:14px}.field label{font-size:12px;color:#c6ceda;font-weight:700}.field input,.field textarea,.field select{width:100%;background:#111620;border:1px solid #343d4d;border-radius:10px;padding:12px;color:var(--text);outline:none}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--accent)}.field textarea{min-height:130px;resize:vertical;line-height:1.6}.hint{font-size:11px;color:var(--muted);line-height:1.5}
+.google-btn{width:100%;display:flex;justify-content:center;align-items:center;gap:11px;background:#f6f7f9;color:#20242b;border:0;border-radius:10px;padding:12px;font-weight:700}.google-g{font:700 19px Arial;color:#4285f4}
+.profileline{display:flex;align-items:center;gap:10px}.profileline .name{font-weight:700;font-size:13px}.profileline .email{color:var(--muted);font-size:11px}
+.comment-list{display:grid;gap:12px;margin:17px 0}.comment{border-left:2px solid #59432e;padding:2px 0 2px 12px}.comment .c-head{display:flex;gap:8px;align-items:center;font-size:11px}.comment .c-head span:last-child{color:var(--muted)}.comment p{font-size:12px;line-height:1.6;color:#c2cad5;margin:6px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:#252d3a;border:1px solid #455064;color:var(--text);padding:11px 16px;border-radius:10px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:60;max-width:calc(100% - 30px)}.toast.show{opacity:1;transform:translate(-50%,0)}
+footer{border-top:1px solid var(--line);padding:25px 20px;color:var(--muted);font-size:11px;text-align:center}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.sidebar{display:grid;grid-template-columns:1fr 1fr;gap:12px}.side-card{margin:0}.search{width:170px}}
+@media(max-width:620px){.nav{width:calc(100% - 28px);gap:14px}.navlinks{display:none}.search{display:none}.brand{font-size:20px}.navright{gap:8px}.navright .btn{padding:9px 11px}.topbar{height:62px}main{width:calc(100% - 28px);margin:20px auto 55px}.hero{padding:26px 22px;min-height:220px}.hero:after{font-size:75px;right:2%}.hero h1{font-size:31px}.hero p{font-size:13px}.layout{margin-top:22px}.sidebar{grid-template-columns:1fr}.post{padding:16px}.post h3{font-size:16px}.section-head{align-items:flex-start;gap:12px;flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="nav">
+    <a class="brand" href="#"><span class="brand-mark">あ</span>Anime<span>Koe</span></a>
+    <div class="navlinks"><a class="active" href="#">Diskusi</a><a href="#panduan">Panduan</a></div>
+    <div class="navright">
+      <div class="search"><input id="searchInput" type="search" placeholder="Cari diskusi..."></div>
+      <div id="accountArea"><button class="btn btn-primary" id="loginBtn">Masuk</button></div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Komunitas anime Indonesia</div>
+      <h1>Cerita anime, sudut pandangmu.</h1>
+      <p>Tempat ngobrol soal episode terbaru, teori liar, karakter favorit, sampai rekomendasi yang layak masuk watchlist.</p>
+      <div class="hero-actions"><button class="btn btn-primary" id="startPostBtn">Mulai diskusi</button><button class="btn btn-ghost" id="exploreBtn">Jelajahi topik</button></div>
+    </div>
+  </section>
+
+  <div class="layout">
+    <section>
+      <div class="section-head"><div><h2>Ruang Diskusi</h2><p>Pendapat berbeda boleh, saling menghargai wajib.</p></div></div>
+      <div class="tabs" id="categoryTabs">
+        <button class="tab active" data-cat="Semua">Semua</button>
+        <button class="tab" data-cat="One Piece">One Piece</button>
+        <button class="tab" data-cat="Naruto">Naruto</button>
+        <button class="tab" data-cat="Attack on Titan">Attack on Titan</button>
+        <button class="tab" data-cat="Rekomendasi">Rekomendasi</button>
+        <button class="tab" data-cat="Teori">Teori</button>
+        <button class="tab" data-cat="Lainnya">Lainnya</button>
+      </div>
+      <div id="feed" class="feed"><div class="loading">Menghubungkan ke AnimeKoe…</div></div>
+    </section>
+
+    <aside class="sidebar">
+      <div class="side-card">
+        <h3>Tempat yang nyaman untuk diskusi</h3>
+        <div class="topic-list">
+          <div class="topic"><span>💬 Bahas episode</span><small>Update mingguan</small></div>
+          <div class="topic"><span>🧩 Teori & spekulasi</span><small>Bebas berpendapat</small></div>
+          <div class="topic"><span>⭐ Rekomendasi anime</span><small>Temukan tontonan</small></div>
+          <div class="topic"><span>🎭 Karakter & lore</span><small>Bedah cerita</small></div>
+        </div>
+      </div>
+      <div class="side-card" id="panduan">
+        <h3>Etika komunitas</h3>
+        <p class="side-note">Gunakan judul yang jelas. Tandai spoiler di judul atau isi diskusi. Kritik ceritanya, bukan orangnya. Hindari spam, ujaran kebencian, dan membagikan informasi pribadi.</p>
+        <div class="rule"></div>
+        <p class="side-note">AnimeKoe adalah ruang komunitas penggemar. Hormati hak cipta dan jangan unggah episode, manga, atau materi bajakan.</p>
+      </div>
+      <div class="side-card">
+        <h3>Baru di sini?</h3>
+        <p class="side-note">Masuk dengan akun Google untuk membuat topik dan ikut berkomentar. AnimeKoe tidak pernah meminta atau menyimpan password Google kamu.</p>
+      </div>
+    </aside>
+  </div>
+</main>
+<footer>AnimeKoe © <span id="year"></span> · Dibuat untuk obrolan yang seru dan saling menghargai.</footer>
+
+<div class="modal-backdrop" id="postModal">
+ <div class="modal">
+  <div class="modal-head"><h2>Buka diskusi baru</h2><button class="close" data-close="postModal">×</button></div>
+  <form id="postForm">
+   <div class="field"><label for="postTitle">Judul diskusi</label><input id="postTitle" maxlength="120" required placeholder="Contoh: Menurut kalian, apa tujuan sebenarnya..."></div>
+   <div class="field"><label for="postCategory">Kategori</label><select id="postCategory"><option>One Piece</option><option>Naruto</option><option>Attack on Titan</option><option>Rekomendasi</option><option>Teori</option><option>Lainnya</option></select></div>
+   <div class="field"><label for="postBody">Ceritakan pendapatmu</label><textarea id="postBody" maxlength="5000" required placeholder="Tulis pendapat, pertanyaan, atau teori kamu..."></textarea><div class="hint">Maksimal 5.000 karakter. Beri peringatan jika berisi spoiler.</div></div>
+   <button class="btn btn-primary" style="width:100%" type="submit">Terbitkan diskusi</button>
+  </form>
+ </div>
+</div>
+
+<div class="modal-backdrop" id="commentsModal">
+ <div class="modal">
+  <div class="modal-head"><h2 id="commentsTitle">Diskusi</h2><button class="close" data-close="commentsModal">×</button></div>
+  <div id="commentsPost" class="side-note"></div>
+  <div class="rule"></div>
+  <div id="commentList" class="comment-list"></div>
+  <form id="commentForm">
+   <div class="field"><label for="commentText">Tulis komentar</label><textarea id="commentText" maxlength="2000" required placeholder="Tambahkan sudut pandangmu..."></textarea></div>
+   <button class="btn btn-primary" type="submit">Kirim komentar</button>
+  </form>
+ </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<!-- Firebase SDK (compat). Isi konfigurasi Firebase milikmu di bagian CONFIG di bawah. -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+/* ===================== CONFIG =====================
+   Firebase Console > Project settings > Your apps > Web app.
+   Salin firebaseConfig milik proyekmu ke sini. Jangan memasukkan password/API rahasia.
+*/
+const firebaseConfig = {
+  apiKey: "GANTI_DENGAN_API_KEY_FIREBASE",
+  authDomain: "GANTI_DENGAN_PROJECT_ID.firebaseapp.com",
+  projectId: "GANTI_DENGAN_PROJECT_ID",
+  storageBucket: "GANTI_DENGAN_PROJECT_ID.appspot.com",
+  messagingSenderId: "GANTI_DENGAN_MESSAGING_SENDER_ID",
+  appId: "GANTI_DENGAN_APP_ID"
+};
+/* ================================================= */
+const configured = firebaseConfig.apiKey !== "GANTI_DENGAN_API_KEY_FIREBASE" &&
+                   firebaseConfig.projectId !== "GANTI_DENGAN_PROJECT_ID";
+let auth=null, db=null, currentUser=null, activeCategory="Semua", allPosts=[], selectedPost=null, unsubscribeComments=null;
+const $ = id => document.getElementById(id);
+$("year").textContent = new Date().getFullYear();
+
+function toast(message){const el=$("toast");el.textContent=message;el.classList.add("show");clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove("show"),3200)}
+function openModal(id){$(id).classList.add("show")}
+function closeModal(id){$(id).classList.remove("show")}
+document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",()=>closeModal(b.dataset.close)));
+document.querySelectorAll(".modal-backdrop").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)closeModal(m.id)}));
+
+function escapeHTML(s=""){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function timeAgo(date){const sec=Math.max(0,Math.floor((Date.now()-date.getTime())/1000));if(sec<60)return"baru saja";if(sec<3600)return Math.floor(sec/60)+" menit lalu";if(sec<86400)return Math.floor(sec/3600)+" jam lalu";if(sec<604800)return Math.floor(sec/86400)+" hari lalu";return date.toLocaleDateString("id-ID",{day:"numeric",month:"short",year:"numeric"})}
+function initials(name="A"){return escapeHTML(name.trim().charAt(0).toUpperCase()||"A")}
+function avatarHTML(user,sizeClass="userpic"){return user.photoURL?`<img class="${sizeClass}" src="${escapeHTML(user.photoURL)}" alt="" referrerpolicy="no-referrer">`:`<span class="${sizeClass}" style="display:grid;place-items:center">${initials(user.displayName||"A")}</span>`}
+function dateOf(ts){return ts&&ts.toDate?ts.toDate():new Date()}
+
+function renderAccount(){
+ const area=$("accountArea");
+ if(!currentUser){area.innerHTML='<button class="btn btn-primary" id="loginBtn">Masuk</button>'; $("loginBtn").onclick=login;return}
+ area.innerHTML=`<div class="profileline">${avatarHTML(currentUser,"avatar")}<button class="btn btn-ghost" id="accountMenu">${escapeHTML(currentUser.displayName||"Pengguna")}</button></div>`;
+ $("accountMenu").onclick=()=>{if(confirm("Keluar dari AnimeKoe?"))auth.signOut()};
+}
+async function login(){
+ if(!configured){toast("Firebase belum dikonfigurasi. Ikuti README sebelum mengaktifkan login.");return}
+ try{const provider=new firebase.auth.GoogleAuthProvider();provider.setCustomParameters({prompt:"select_account"});await auth.signInWithPopup(provider)}
+ catch(e){console.error(e);toast("Login gagal: "+(e.code||"periksa konfigurasi Firebase"))}
+}
+function requireLogin(){if(!currentUser){toast("Masuk dengan Google terlebih dahulu.");login();return false}return true}
+$("loginBtn").onclick=login;
+$("startPostBtn").onclick=()=>{if(requireLogin())openModal("postModal")};
+$("exploreBtn").onclick=()=>$("feed").scrollIntoView({behavior:"smooth"});
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));t.classList.add("active");activeCategory=t.dataset.cat;renderFeed()});
+$("searchInput").addEventListener("input",renderFeed);
+
+function renderFeed(){
+ const query=$("searchInput").value.trim().toLowerCase();
+ const posts=allPosts.filter(p=>(activeCategory==="Semua"||p.category===activeCategory)&&(!query||(p.title+" "+p.body+" "+p.authorName).toLowerCase().includes(query)));
+ if(!posts.length){$("feed").innerHTML='<div class="empty">Belum ada diskusi di sini. Jadilah orang pertama yang memulai obrolan.</div>';return}
+ $("feed").innerHTML=posts.map(p=>`<article class="post">
+  <div class="post-top">${p.authorPhoto?`<img class="userpic" src="${escapeHTML(p.authorPhoto)}" alt="">`:`<span class="userpic" style="display:grid;place-items:center">${initials(p.authorName)}</span>`}
+   <div class="user-meta"><span class="username">${escapeHTML(p.authorName||"Pengguna AnimeKoe")}</span><span class="post-time">${timeAgo(dateOf(p.createdAt))}</span></div><span class="category">${escapeHTML(p.category||"Lainnya")}</span>
+  </div>
+  <h3>${escapeHTML(p.title)}</h3><div class="post-body">${escapeHTML(p.body)}</div>
+  <div class="post-foot"><button data-comments="${p.id}">◷ ${p.commentCount||0} komentar</button><span>Diskusi komunitas</span></div>
+ </article>`).join("");
+ document.querySelectorAll("[data-comments]").forEach(b=>b.onclick=()=>showComments(b.dataset.comments));
+}
+async function loadPosts(){
+ if(!db){$("feed").innerHTML='<div class="empty">Website sudah siap secara tampilan. Hubungkan Firebase di konfigurasi untuk mengaktifkan diskusi online.</div>';return}
+ db.collection("posts").orderBy("createdAt","desc").limit(100).onSnapshot(s=>{
+  allPosts=s.docs.map(d=>({id:d.id,...d.data()}));renderFeed();
+ },e=>{console.error(e);$("feed").innerHTML='<div class="empty">Tidak dapat memuat diskusi. Periksa Firestore Rules dan koneksi.</div>'});
+}
+
+$("postForm").addEventListener("submit",async e=>{
+ e.preventDefault();if(!requireLogin())return;
+ const title=$("postTitle").value.trim(),body=$("postBody").value.trim(),category=$("postCategory").value;
+ if(!title||!body)return;
+ const btn=e.submitter;btn.disabled=true;btn.textContent="Menerbitkan…";
+ try{await db.collection("posts").add({title,body,category,uid:currentUser.uid,authorName:currentUser.displayName||"Pengguna",authorPhoto:currentUser.photoURL||"",createdAt:firebase.firestore.FieldValue.serverTimestamp(),commentCount:0});$("postForm").reset();closeModal("postModal");toast("Diskusi berhasil diterbitkan.")}
+ catch(err){console.error(err);toast("Gagal menerbitkan diskusi. Periksa koneksi dan aturan Firestore.")}
+ finally{btn.disabled=false;btn.textContent="Terbitkan diskusi"}
+});
+
+async function showComments(postId){
+ selectedPost=allPosts.find(p=>p.id===postId);if(!selectedPost)return;
+ $("commentsTitle").textContent=selectedPost.title;$("commentsPost").textContent=selectedPost.body;
+ $("commentList").innerHTML='<div class="loading">Memuat komentar…</div>';openModal("commentsModal");
+ if(unsubscribeComments)unsubscribeComments();
+ unsubscribeComments=db.collection("posts").doc(postId).collection("comments").orderBy("createdAt","asc").onSnapshot(s=>{
+  if(!s.size){$("commentList").innerHTML='<div class="side-note">Belum ada komentar. Mulai percakapannya.</div>';return}
+  $("commentList").innerHTML=s.docs.map(d=>{const c=d.data();return `<div class="comment"><div class="c-head"><strong>${escapeHTML(c.authorName||"Pengguna")}</strong><span>${timeAgo(dateOf(c.createdAt))}</span></div><p>${escapeHTML(c.text)}</p></div>`}).join("");
+ },e=>{console.error(e);$("commentList").innerHTML='<div class="side-note">Komentar tidak dapat dimuat.</div>'});
+}
+$("commentForm").addEventListener("submit",async e=>{
+ e.preventDefault();if(!requireLogin()||!selectedPost)return;
+ const text=$("commentText").value.trim();if(!text)return;
+ const btn=e.submitter;btn.disabled=true;btn.textContent="Mengirim…";
+ try{
+  const postRef=db.collection("posts").doc(selectedPost.id);
+  await db.runTransaction(async tx=>{
+   const snap=await tx.get(postRef);if(!snap.exists)throw new Error("Diskusi tidak ditemukan");
+   const commentRef=postRef.collection("comments").doc();
+   tx.set(commentRef,{text,uid:currentUser.uid,authorName:currentUser.displayName||"Pengguna",createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+   tx.update(postRef,{commentCount:firebase.firestore.FieldValue.increment(1)});
+  });
+  $("commentText").value="";toast("Komentar terkirim.");
+ }catch(err){console.error(err);toast("Komentar gagal dikirim.")}
+ finally{btn.disabled=false;btn.textContent="Kirim komentar"}
+});
+
+if(configured){
+ try{firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();
+  auth.onAuthStateChanged(user=>{currentUser=user;renderAccount()});loadPosts();
+ }catch(e){console.error(e);$("feed").innerHTML='<div class="empty">Konfigurasi Firebase tidak valid.</div>'}
+}else{renderAccount();loadPosts()}
+</script>
+</body>
+</html>
